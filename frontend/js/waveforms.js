@@ -65,7 +65,6 @@
       });
     }
   }
-
   if(isCompletePage){
     console.log('Fetching match_id', matchId);
     fetch(`/backend/api/vote/get_matches.php?match_id=${matchId}`)
@@ -73,7 +72,6 @@
             .then(data => {
                 if (data.success) {
                     const match = data.matches.find(m => m.match_id == matchId);
-                    //const match = data.matches[0];
                     console.log(match)
                     if (!match) {
                         console.error('Match not found or not ready for voting');
