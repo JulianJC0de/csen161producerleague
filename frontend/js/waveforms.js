@@ -72,8 +72,8 @@
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    //const match = data.matches.find(m => m.match_id == matchId);
-                    const match = data.matches[0];
+                    const match = data.matches.find(m => m.match_id == matchId);
+                    //const match = data.matches[0];
                     console.log(match)
                     if (!match) {
                         console.error('Match not found or not ready for voting');
