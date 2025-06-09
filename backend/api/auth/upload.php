@@ -100,7 +100,7 @@ try {
     echo json_encode([
         "success" => true,
         "message" => "file uploaded successfully",
-        "file" => $filePath,
+        "fileUrl" => $filePath,
         "uploads_complete" => $uploads_complete
     ]);
 

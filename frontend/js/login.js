@@ -5,7 +5,10 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     const password = document.getElementById('password').value;
     
     try {
-        const BASE_URL = window.location.origin + '/producerleague'; //get BASE_URL
+        //const BASE_URL = window.location.origin + '/producerleague'; //get BASE_URL
+        const BASE_URL = window.location.pathname.includes('/producerleague')
+        ? '/producerleague'
+        : '';
         const response = await fetch(`${BASE_URL}/backend/api/auth/login.php`, {
             method: 'POST',
             headers: {

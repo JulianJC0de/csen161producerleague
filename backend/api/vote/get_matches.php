@@ -15,11 +15,14 @@ $db = getDB();
 
 try {
     // Get matches that are ready for voting (have 2 uploads) ordered by creation date
+    //Added m.player2_id for matches
     $stmt = $db->prepare('
         SELECT 
             m.id as match_id,
             m.created_at,
             m.status,
+            m.player1_id,
+            m.player2_id,
             m.player1_votes,
             m.player2_votes,
             p1.producername as player1_name,
@@ -35,8 +38,7 @@ try {
         LEFT JOIN votes v ON m.id = v.match_id AND v.voter_id = :user_id
         WHERE m.status = "ready_for_voting"
         ORDER BY m.created_at ASC
-    ');
-    
+    '); 
     $stmt->bindValue(':user_id', $user_id, SQLITE3_INTEGER);
     $result = $stmt->execute();
     

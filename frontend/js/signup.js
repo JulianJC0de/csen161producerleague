@@ -13,7 +13,10 @@ document.getElementById('signupForm').addEventListener('submit', async (e) => {
     }
     
     try {
-        const BASE_URL = window.location.origin + '/producerleague';
+        //const BASE_URL = window.location.origin + '/producerleague';
+        const BASE_URL = window.location.pathname.includes('/producerleague')
+        ? '/producerleague'
+        : '';
         const response = await fetch(`${BASE_URL}/backend/api/auth/signup.php`, { 
             method: 'POST',
             headers: {
